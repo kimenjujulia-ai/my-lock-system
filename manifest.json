@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "My Lock",
+  "version": "2.0",
+  "description": "Locks Chrome with a password when it starts and after 3 minutes of inactivity.",
+  "permissions": ["storage", "idle"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_title": "Lock now" },
+  "content_scripts": [
+    { "matches": ["<all_urls>"], "js": ["lock.js"], "run_at": "document_start" }
+  ],
+  "web_accessible_resources": [
+    { "resources": ["hero.webp"], "matches": ["<all_urls>"] }
+  ],
+  "chrome_url_overrides": { "newtab": "newtab.html" }
+}
